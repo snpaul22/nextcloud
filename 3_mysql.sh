@@ -62,7 +62,7 @@ get_password_db() {
 # MySQL database password creation
 echo "Create MySQL Password for NextCloud Database: "
 while true; do
-    get_password
+    get_password_db
     if [ $? -eq 0 ]; then
         break
     fi
