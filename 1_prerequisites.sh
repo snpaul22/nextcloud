@@ -9,12 +9,11 @@ sudo wget https://collaboraoffice.com/downloads/gpg/collaboraonline-release-keyr
 
 # Add required repositories
 sudo add-apt-repository ppa:ondrej/php
-cat > /etc/apt/sources.list.d/collaboraonline.sources<< EOF
-Types: deb
-URIs: https://www.collaboraoffice.com/repos/CollaboraOnline/CODE-deb
-Suites: ./
-Signed-By: /usr/share/keyrings/collaboraonline-release-keyring.gpg
-EOF
+echo -e "
+Types: deb\
+URIs: https://www.collaboraoffice.com/repos/CollaboraOnline/CODE-deb\
+Suites: ./\
+Signed-By: /usr/share/keyrings/collaboraonline-release-keyring.gpg" | sudo tee /etc/apt/sources.list.d/collaboraonline.sources
 
 # Update system packages again
 sudo apt update
