@@ -9,12 +9,12 @@ sudo wget https://collaboraoffice.com/downloads/gpg/collaboraonline-release-keyr
 
 # Add required repositories
 sudo add-apt-repository ppa:ondrej/php
-cat > /etc/apt/sources.list.d/collaboraonline.sources<< EOF
+echo "
 Types: deb
 URIs: https://www.collaboraoffice.com/repos/CollaboraOnline/CODE-deb
 Suites: ./
 Signed-By: /usr/share/keyrings/collaboraonline-release-keyring.gpg
-EOF
+" | sudo tee /etc/apt/sources.list.d/collaboraonline.sources
 
 # Update system packages again
 sudo apt update
@@ -70,10 +70,14 @@ sudo a2dissite 000-default.conf
 sudo systemctl restart apache2
 
 # Define MySQL variables
-read -sp "Enter MySQL Root Password: " MYSQL_ROOT_PASSWORD
+read -sp "Create MySQL Root Password: " MYSQL_ROOT_PASSWORD
+break
 read -p "Create MySQL Username for NextCloud Database: " MYSQL_NEXTCLOUD_USER
+break
 read -sp "Create MySQL Password for NextCloud Database: " MYSQL_NEXTCLOUD_PASSWORD
+break
 read -p "Create MySQL Database for NextCloud Database: " MYSQL_NEXTCLOUD_DB
+break
 
 # Create a MySQL database and user for Nextcloud
 sudo mysql -u root -p"$MYSQL_ROOT_PASSWORD" <<MYSQL_SCRIPT
