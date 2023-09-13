@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Define MySQL variables
-read -sp "Enter your root user's password: \n" MYSQL_ROOT_PASSWORD
+read -sp "Enter your root user's password: `echo $'\n> '`" MYSQL_ROOT_PASSWORD
 read -p "Create MySQL database for Nextcloud: " MYSQL_NEXTCLOUD_DB
 read -p "Create MySQL username for Nextcloud: " MYSQL_NEXTCLOUD_USER
 
