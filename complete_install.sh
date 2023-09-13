@@ -13,10 +13,11 @@ COLLABORA_ADMIN_PASSWORD="your_collabora_admin_password"
 sudo apt update
 sudo apt upgrade -y
 sudo add-apt-repository ppa:ondrej/php
+sudo add-apt-repository ppa:libreoffice/ppa
 sudo apt update
 
 # Install required packages
-sudo apt install -y apache2 mysql-server php8.2 php8.2-mysql php8.2-curl php8.2-gd php8.2-intl php8.2-json php8.2-mbstring php8.2-xml php8.2-zip libapache2-mod-php8.2 redis-server
+sudo apt install -y apache2 mysql-server php8.2 php8.2-mysql php8.2-curl php8.2-gd php8.2-intl php8.2-mbstring php8.2-xml php8.2-zip php8.2-imagick libmagickcore-dev libapache2-mod-php8.2 redis-server php-redis apt-transport-https ca-certificates curl software-properties-common loolwsd code-brand libreoffice-calc
 
 # Enable Apache modules
 sudo a2enmod rewrite headers env dir mime setenvif ssl
@@ -69,9 +70,6 @@ GRANT ALL PRIVILEGES ON $MYSQL_NEXTCLOUD_DB.* TO '$MYSQL_NEXTCLOUD_USER'@'localh
 FLUSH PRIVILEGES;
 MYSQL_SCRIPT
 
-# Install PHP Redis extension
-sudo apt install -y php-redis
-
 # Configure Nextcloud to use Redis for memory caching
 sudo -u www-data php /var/www/html/nextcloud/occ config:system:set memcache.local --value '\OC\Memcache\Redis'
 sudo -u www-data php /var/www/html/nextcloud/occ config:system:set redis host --value "localhost"
@@ -83,16 +81,6 @@ if php -r 'if (class_exists("Redis")) { $redis = new Redis(); $redis->connect("l
 else
     echo "Redis configuration test failed. Please check your Redis setup."
 fi
-
-# Install Collabora Online dependencies
-sudo apt install -y apt-transport-https ca-certificates curl software-properties-common
-
-# Add Collabora Online repository
-sudo add-apt-repository ppa:libreoffice/ppa
-sudo apt update
-
-# Install Collabora Online Code Server
-sudo apt install -y loolwsd code-brand libreoffice-calc
 
 # Configure Collabora Online
 sudo tee /etc/loolwsd/loolwsd.xml > /dev/null <<EOF
