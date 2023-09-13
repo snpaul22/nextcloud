@@ -31,11 +31,9 @@ while true; do
     fi
 done
 
-read -p "Create MySQL database for NextCloud: " MYSQL_NEXTCLOUD_DB
-break
-read -p "Create MySQL username for NextCloud: " MYSQL_NEXTCLOUD_USER
-break
-read -sp "" MYSQL_NEXTCLOUD_PASSWORD
+read -p "Create MySQL database for Nextcloud: " MYSQL_NEXTCLOUD_DB
+read -p "Create MySQL username for Nextcloud: " MYSQL_NEXTCLOUD_USER
+
 
 # Create MySQL database password and confirm
 get_password_db() {
@@ -60,7 +58,7 @@ get_password_db() {
 }
 
 # MySQL database password creation
-echo "Create MySQL Password for NextCloud Database: "
+echo "Create MySQL Password for Nextcloud Database: "
 while true; do
     get_password_db
     if [ $? -eq 0 ]; then
