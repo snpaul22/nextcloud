@@ -16,7 +16,7 @@ get_password_db() {
     echo
 
     # Prompt to confirm the password
-    read -sp "Confirm the password: " MYSQL_NEXTCLOUD_PASSWORD2
+    read -sp "Re-enter the password: " MYSQL_NEXTCLOUD_PASSWORD2
     echo
 
     # Compare the two passwords
@@ -38,6 +38,14 @@ while true; do
     fi
 done
 
+# MySQL secure installation preconfiguration
+sudo mysql <<SECURE_INSTALL
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '$MYSQL_ROOT_PASSWORD';
+SECURE_INSTALL
+
+# MySQL secure installation
+sudo mysql_secure_installation
+
 # Create a MySQL database and user for Nextcloud
 sudo mysql -u root -p"$MYSQL_ROOT_PASSWORD" <<MYSQL_SCRIPT
 CREATE DATABASE $MYSQL_NEXTCLOUD_DB;
@@ -45,3 +53,8 @@ CREATE USER '$MYSQL_NEXTCLOUD_USER'@'localhost' IDENTIFIED BY '$MYSQL_NEXTCLOUD_
 GRANT ALL PRIVILEGES ON $MYSQL_NEXTCLOUD_DB.* TO '$MYSQL_NEXTCLOUD_USER'@'localhost';
 FLUSH PRIVILEGES;
 MYSQL_SCRIPT
+
+# MySQL secure installation revert
+sudo mysql -u root -p <<SECURE_REVERT
+ALTER USER 'root'@'localhost' IDENTIFIED WITH auth_socket;
+SECURE_REVERT
