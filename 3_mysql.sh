@@ -1,36 +1,7 @@
 #!/bin/bash
 
-# Create MySQL root password and confirm
-get_password_mysql() {
-    local MYSQL_ROOT_PASSWORD MYSQL_ROOT_PASSWORD2
-
-    # Prompt for the password
-    read -sp "Enter a password: " MYSQL_ROOT_PASSWORD
-    echo
-
-    # Prompt to confirm the password
-    read -sp "Confirm the password: " MYSQL_ROOT_PASSWORD2
-    echo
-
-    # Compare the two passwords
-    if [ "$MYSQL_ROOT_PASSWORD" = "$MYSQL_ROOT_PASSWORD2" ]; then
-        echo "Password successfully set."
-        return 0
-    else
-        echo "Passwords do not match. Please try again."
-        return 1
-    fi
-}
-
-# MySQL root password creation
-echo "Create MySQL root password: "
-while true; do
-    get_password_mysql
-    if [ $? -eq 0 ]; then
-        break
-    fi
-done
-
+# Define MySQL variables
+read -sp "Enter your root user's password: " MYSQL_ROOT_PASSWORD
 read -p "Create MySQL database for Nextcloud: " MYSQL_NEXTCLOUD_DB
 read -p "Create MySQL username for Nextcloud: " MYSQL_NEXTCLOUD_USER
 
