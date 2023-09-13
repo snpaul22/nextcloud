@@ -31,9 +31,9 @@ while true; do
     fi
 done
 
-read -p "Create MySQL Database for NextCloud Database: " MYSQL_NEXTCLOUD_DB
+read -p "Create MySQL database for NextCloud: " MYSQL_NEXTCLOUD_DB
 break
-read -p "Create MySQL Username for NextCloud Database: " MYSQL_NEXTCLOUD_USER
+read -p "Create MySQL username for NextCloud: " MYSQL_NEXTCLOUD_USER
 break
 read -sp "" MYSQL_NEXTCLOUD_PASSWORD
 
