@@ -1,9 +1,9 @@
 #!/bin/bash
 
 # Variables to update
-NEXTCLOUD_SERVER_NAME="your_server_domain_or_IP"
-MYSQL_ROOT_PASSWORD="your_mysql_root_password"
-MYSQL_NEXTCLOUD_USER="nextcloud_user"
+read -p "Enter NextCloud Server Domain or IP: " NEXTCLOUD_SERVER_NAME
+read -sp "Enter MySQL Root Password: " MYSQL_ROOT_PASSWORD
+read -p "Enter MySQL NextCloud DB Username: " MYSQL_NEXTCLOUD_USER
 MYSQL_NEXTCLOUD_PASSWORD="your_mysql_nextcloud_password"
 MYSQL_NEXTCLOUD_DB="nextcloud_db"
 COLLABORA_SERVER_NAME="your_collabora_server_domain_or_IP"
