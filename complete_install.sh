@@ -4,10 +4,10 @@
 read -p "Enter NextCloud Server Domain or IP: " NEXTCLOUD_SERVER_NAME
 read -sp "Enter MySQL Root Password: " MYSQL_ROOT_PASSWORD
 read -p "Enter MySQL NextCloud DB Username: " MYSQL_NEXTCLOUD_USER
-MYSQL_NEXTCLOUD_PASSWORD="your_mysql_nextcloud_password"
-MYSQL_NEXTCLOUD_DB="nextcloud_db"
-COLLABORA_SERVER_NAME="your_collabora_server_domain_or_IP"
-COLLABORA_ADMIN_PASSWORD="your_collabora_admin_password"
+read -sp "your_mysql_nextcloud_password: " MYSQL_NEXTCLOUD_PASSWORD
+read -p "nextcloud_db: " MYSQL_NEXTCLOUD_DB
+read -p "your_collabora_server_domain_or_IP: " COLLABORA_SERVER_NAME
+read -sp "your_collabora_admin_password: " COLLABORA_ADMIN_PASSWORD
 
 # Update system packages
 sudo apt update
@@ -15,6 +15,7 @@ sudo apt upgrade -y
 sudo add-apt-repository ppa:ondrej/php
 sudo add-apt-repository ppa:libreoffice/ppa
 sudo apt update
+sudo apt upgrade -y
 
 # Install required packages
 sudo apt install -y apache2 mysql-server php8.2 php8.2-mysql php8.2-curl php8.2-gd php8.2-intl php8.2-mbstring php8.2-xml php8.2-zip php8.2-imagick libmagickcore-dev libapache2-mod-php8.2 redis-server php-redis apt-transport-https ca-certificates curl software-properties-common loolwsd code-brand libreoffice-calc
