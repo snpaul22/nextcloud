@@ -24,7 +24,7 @@ sudo apt upgrade -y
 sudo apt install -y apache2 mysql-server php8.2 php8.2-mysql php8.2-curl php8.2-gd php8.2-intl php8.2-mbstring php8.2-xml php8.2-zip php8.2-imagick libmagickcore-dev libapache2-mod-php8.2 redis-server php-redis coolwsd code-brand
 
 # MySQL secure installation
-mysql_secure_installation
+sudo mysql_secure_installation
 
 # Enable Apache modules
 sudo a2enmod rewrite headers env dir mime setenvif ssl
