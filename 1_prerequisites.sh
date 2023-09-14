@@ -21,7 +21,7 @@ sudo apt update
 sudo apt upgrade -y
 
 # Install required packages
-sudo apt install -y apache2 mysql-server php8.2 php8.2-mysql php8.2-curl php8.2-gd php8.2-intl php8.2-mbstring php8.2-xml php8.2-zip php8.2-imagick libmagickcore-dev libapache2-mod-php8.2 redis-server php-redis coolwsd code-brand
+sudo apt install -y apache2 mysql-server php8.2 php8.2-mysql php8.2-bcmath php8.2-curl php8.2-gd php8.2-gmp php8.2-intl php8.2-mbstring php8.2-xml php8.2-zip php8.2-imagick libmagickcore-dev libapache2-mod-php8.2 redis-server php-redis coolwsd code-brand
 
 # Enable Apache modules
 sudo a2enmod rewrite headers env dir mime setenvif ssl
